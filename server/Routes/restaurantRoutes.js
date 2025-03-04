@@ -9,5 +9,7 @@ router.post('/restaurant', RestaurantController.restaurant);
 router.get("/restaurantList", RestaurantController.restaurantList);
 router.post("/Modrestaurant/:id", RestaurantController.modificationRestaurant);
 router.get("/restaurant/:id", RestaurantController.restaurantById);
+router.get('/restaurants/:adminId', RestaurantController.getRestaurantByAdmin);
+
 
 module.exports = router;

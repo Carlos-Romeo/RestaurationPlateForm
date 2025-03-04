@@ -16,7 +16,7 @@ exports.utilisateur = async (req, res) => {
                 if (error) {
                     return res.status(500).json({ error: "Erreur lors de l'inscription", details: error });
                 }
-                res.status(200).json({ message: "L'utilisateur a bien été enregistré", result });
+                res.status(200).json({ message: "L'utilisateur a bien été enregistré", id : result.insertId });
             }
         );
     } catch (err) {

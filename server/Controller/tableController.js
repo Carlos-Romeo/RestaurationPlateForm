@@ -9,7 +9,7 @@ exports.table_restaurant = (req, res) => {
             if (error) {
                 return res.status(500).json({ error: "Erreur lors de l'enregistrement des données", details: error });
             }
-            res.status(200).json({ result, message: "Les données ont bien été envoyées" });
+            res.status(200).json({id : result.insertId, message: "Les données ont bien été envoyées" });
         }
     );
 };

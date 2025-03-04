@@ -81,6 +81,21 @@ exports.restaurantById = (req, res) => {
     );
 };
 
+
+
+exports.getRestaurantByAdmin = (req, res) => {
+    const adminId = req.params.adminId;
+    const query = 'SELECT * FROM restaurant WHERE id_admin = ?';
+
+    dataBase.query(query, [adminId], (error, results) => {
+        if (error) {
+            return res.status(500).json({ error: 'Erreur lors de la récupération des informations du restaurant' });
+        }
+        res.status(200).json(results[0]);
+    });
+};
+
+
 exports.modificationRestaurant = (req, res) => {
     let id = req.params.id;
 

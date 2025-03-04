@@ -68,3 +68,23 @@ exports.utilisateurList = (req, res) => {
         }
     );
 };
+
+
+exports.utilisateurId = (req, res) => {
+    id = req.params.id
+
+    let selectAllUserId = `SELECT * FROM utilisateur WHERE id = ?`
+
+    dataBase.query(
+        selectAllUserId,
+        [id],
+        (error, result) => {
+            if (error) {
+                console.error(error);
+                res.status(500).json({ message: "Erreur interne du serveur" });
+            } else {
+                res.status(201).json(result);
+            }
+        }
+    )
+}

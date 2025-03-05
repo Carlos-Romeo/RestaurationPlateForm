@@ -99,16 +99,16 @@ exports.getRestaurantByAdmin = (req, res) => {
 exports.modificationRestaurant = (req, res) => {
     let id = req.params.id;
 
-    let updateRestaurantQuery = "UPDATE restaurant SET nom=?, adresse=?, telephone=?, description=?, id_admin=? WHERE id=?";
+    let updateRestaurantQuery = "UPDATE restaurant SET nom=?, adresse=?, telephone=?, description=?, etoile=? WHERE id=?";
 
     dataBase.query(
         updateRestaurantQuery,
-        [req.body.nom, req.body.adresse, req.body.telephone, req.body.description, req.body.id_admin, id],
+        [req.body.nom, req.body.adresse, req.body.telephone, req.body.description, req.body.etoile, id],
         (error, result) => {
             if (error) {
-                res.status(500).json(error);
+                res.status(500).json({ error: 'Erreur lors de la mise à jour du restaurant', details: error });
             } else {
-                res.status(200).json(result);
+                res.status(200).json({ message: 'Restaurant mis à jour avec succès', result });
             }
         }
     );

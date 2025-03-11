@@ -38,6 +38,28 @@ exports.reservation = (req, res) => {
 
 
 
+exports.reservationByIdTable =(req, res) => {
+
+    const tableId = req.params.tableId
+
+    let reservByIdTable = "SELECT * FROM reservation WHERE id_table = ?"
+
+    dataBase.query(
+        reservByIdTable,
+        [tableId],
+        (error, result) => {
+            if (error) {
+                console.error(error);
+                return res.status(500).json({meesage: "Erreur coté server"})
+            }
+            res.status(201).json(result)
+            
+        }
+    )
+
+}
+
+
 
 
 exports.reservationList = (req, res) => {
